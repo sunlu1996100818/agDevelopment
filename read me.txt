@@ -1,6 +1,6 @@
 This is a Cargo Delivery&Search System, by student Lu Sun, id: w20082256
 
-this assessment is about a cargo system with 2 different models/Schemas:
+this assessment is about a cargo system 
          	cargo model , and the provider model, 
 	with relationships between them£ºCargo.providerID->provider.ObjectID;
 
@@ -8,10 +8,7 @@ using MongoDB as the database;  DB name: Cargo;
 3-collections in the db: Cargo,  provider,  user;
 
 use mocha test,  in  test/cargo-test.js
-	(because this test must connect my local database first, 
-	so seems like you cant test this test structure by yourself,
-	but you can take a look at my cargo-test file in test folder,
-	i can ensure you that this test works)
+	
 
 including many functions for get, post, put, delete.
 Fuzzy search	(¡Ì)	--get/cargoContains/:name    		 	get all cargos whose name contains certain name;
@@ -57,30 +54,13 @@ findCompanyAndReputationById(   ) in my cargo model, and alse, search the mongoo
 
 	1.13  delete/cargo/:id/:providerName		(Authentication)	admin can delete one certain cargo by its ID
 
-  2. for the provider model:	(it doesn't have authtication, because only admin can actually access to this model in my Design);
-
-	2.1    get/provider/providerAll		get all the provider;
-
-	2.2    get/providerCompanyContains/:company	(Fuzzy search)	get all companies contain certain string in case you cant remember the company's full name;
-
-	2.3    get/providerName/:name		get providers by its name;
-
-	2.4    get/provider/:id			get a certain provider by its ID;
-
-	2.5    post/provider				add a provider;
-
-	2.6    put/providerCompanyChange/:id		change one certain provider's company;
-
-	2.7    put/providerReputationChange/:id	change one certain provider's reputation;
-
-	
-
 	For ALL the functions, a correct search returns a Correct response;
 			   
 			   an invalid search can return a certain masseage of Error;
 
 
-For thos functions which contain Authentication, if you dont have the authentication, it will return a message like     "your authentication is not enough,  you cannot XXXXXXXX !"
+For thos functions which contain Authentication, if you dont have the authentication, it will return a message like    
+ "your authentication is not enough,  you cannot XXXXXXXX !"
 
 
 Reference:

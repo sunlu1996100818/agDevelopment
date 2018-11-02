@@ -138,7 +138,6 @@ router.findByName = (req, res) => {
                     res.send("Wrong name! Error!!!");
                 }
                 else {
-                    console.log(cargos111);
                     res.send(JSON.stringify(cargos111,null,5));
                 }
             });

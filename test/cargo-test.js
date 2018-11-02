@@ -5,6 +5,7 @@ let expect = chai.expect;
 let datastore = require('../Models/cargos');
 chai.use(chaiHttp);
 let _ = require('lodash' );
+const clean = require("mocha");
 
 chai.use(require('chai-things'));
 
@@ -239,7 +240,8 @@ describe('cargo', function (){
 
     //post function test:
     describe('POST /cargo/John', function () {
-        it('should return cargo added successfully', function(done) {
+
+        it('should return cargo not successfully added because missing properties', function(done) {
             let cargo = {
                 name:"Tommy",
                 providerID:"5bc9060f5a6760bc51a7f99f"
@@ -249,7 +251,7 @@ describe('cargo', function (){
                 .send(cargo)
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
-
+                    expect(res.body).to.equal('you did not enter the right properties, please check' );
                     done();
                 });
         });
@@ -264,6 +266,16 @@ describe('cargo', function (){
 
                     expect(res.body).to.be.a('array');
                     expect(res.body.length).to.equal(9);
+
+                    done();
+                });
+        });
+        it('should return massage of authentication not enough', function(done) {
+            chai.request(server)
+                .post('/cargo/Sam')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.equal('your authority is not Enough! You cant add new cargos!') ;
                     done();
                 });
         });
@@ -410,5 +422,8 @@ describe('cargo', function (){
         });
     });
     //all put function tested
+
+
+
 
 });
